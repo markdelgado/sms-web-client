@@ -1,0 +1,44 @@
+import { Navbar, Nav, Container, Badge } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { CartContext } from "../contexts/CartContext.jsx";
+import { useContext } from "react";
+
+const AppNavbar = () => {
+  const { cart} = useContext(CartContext);
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+
+  return (
+    <Navbar bg="dark"  variant= "dark" expand="lg" sticky= "top" className="mb-4">
+      <Container>
+        {/* Navbar Brand */}
+        <Navbar.Brand as={Link} to="/">
+          SMS Web Client
+        </Navbar.Brand>
+
+        <Navbar.Toggle aria-controls="main-navbar" />
+        <Navbar.Collapse id="main-navbar">
+
+          <Nav className="me-auto">
+            {/* Products Link */}
+            <Nav.Link as={Link} to="/products">
+              Product
+            </Nav.Link>
+            </Nav>
+            <Nav className="ms-auto">
+            {/* Cart Link with Item Count */}
+            <Nav.Link as={Link} to="/cart">
+              Cart{" "}
+              {cartCount > 0 && (
+                <Badge bg="secondary">{cartCount}</Badge>
+              )}
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+
+        );
+        };
+export default AppNavbar;
+
+    
