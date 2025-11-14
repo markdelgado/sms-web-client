@@ -3,7 +3,7 @@ export const mockProducts = [
     {
    sku: "123456",
    name: "Product A",
-   price: 29.99,
+   price: 69.99,
    qty: 100,
    description: "Description for Product A",
    image: "./images/product1.webp"

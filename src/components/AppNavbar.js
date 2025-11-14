@@ -8,7 +8,7 @@ const AppNavbar = () => {
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <Navbar bg="dark"  variant= "dark" expand="lg" sticky= "top" className="mb-4">
+    <Navbar bg="dark"  variant= "dark" expand="lg" sticky= "top">
       <Container>
         {/* Navbar Brand */}
         <Navbar.Brand as={Link} to="/">
