@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
         variant="top"
         src={product.image}
         alt={product.name}
-        style={{ objectFit: "cover", height: "200px" }}
+        style={{ objectFit: "auto", height: "auto " }}
       />
       <Card.Body className="d-flex flex-column">
         <Card.Title>{product.name}</Card.Title>
