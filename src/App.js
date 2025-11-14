@@ -8,6 +8,7 @@ import Checkout from './pages/Checkout.jsx';
 import Home from './pages/Home.jsx';
 import OrderConfirmation from './pages/OderConfirmation.jsx';
 import Products from './pages/Products.jsx';
+import ProductPage from './pages/ProductPage.jsx';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/order-confirmation" element={<OrderConfirmation />} />
+          //<Route path="/products/:sku" element={<ProductPage />} />
+          <Route path="/product/:sku" element={<ProductPage />} />
         </Routes>
     </Router>
 

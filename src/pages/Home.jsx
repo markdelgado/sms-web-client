@@ -103,7 +103,9 @@ const Home = () => {
                 <Card.Body>
                   <Card.Title className="mb-2">{product.title}</Card.Title>
                   <Card.Text className="fw-bold mb-3">${product.price}</Card.Text>
-                  <Button as={Link} to="/products" variant="dark">
+                  <Button as={Link}
+                    to={`/product/${product.sku}`}
+                   variant="dark">
                     View Product
                   </Button>
                 </Card.Body>

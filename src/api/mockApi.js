@@ -6,7 +6,7 @@ export const mockProducts = [
    price: 69.99,
    qty: 100,
    description: "Description for Product A",
-   image: "./images/product1.webp"
+   image: "/images/product1.webp"
     },
     {
     sku: "789012",
@@ -14,7 +14,7 @@ export const mockProducts = [
     price: 49.99,
     qty: 50,
     description: "Description for Product B",
-    image: "./images/product2.webp"
+    image: "/images/product2.webp"
     },
     {
     sku: "345678",
@@ -22,7 +22,7 @@ export const mockProducts = [
     price: 19.99,
     qty: 200,
     description: "Description for Product C",
-    image: "./images/product3.webp"
+    image: "/images/product3.webp"
     }
 ];
 
