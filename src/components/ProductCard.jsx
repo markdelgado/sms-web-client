@@ -12,20 +12,31 @@ const ProductCard = ({ product }) => {
         variant="top"
         src={product.image}
         alt={product.name}
-        style={{ objectFit: "auto", height: "auto " }}
+        style={{ objectFit: "contain", height: "220px", padding: "0.75rem" }}
       />
       <Card.Body className="d-flex flex-column">
         <Card.Title>{product.name}</Card.Title>
         <Card.Text className="flex-grow-1">{product.description}</Card.Text>
-        <Button
-            as={Link}
-            to={`/products/${product.sku}`}
-            variant="dark">
-             View
-        </Button>
-        <Button variant="dark" onClick={() => addToCart(product, 1)}>
-          Add to Cart - ${product.price}
-        </Button>
+        <div className="text-end fw-semibold">${product.price}</div>
+        <div className="d-flex flex-column gap-2 mt-auto">
+          <div className="d-flex gap-2">
+            <Button
+              as={Link}
+              to={`/products/${product.sku}`}
+              variant="outline-dark"
+              className="flex-fill"
+            >
+              View
+            </Button>
+            <Button
+              variant="dark"
+              onClick={() => addToCart(product, 1)}
+              className="flex-fill"
+            >
+              Add
+            </Button>
+          </div>
+        </div>
       </Card.Body>
     </Card>
   );
