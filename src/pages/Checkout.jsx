@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { CartContext } from "../contexts/CartContext";
 import { createOrderMock } from "../api/mockApi";
 
-import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Card, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
@@ -16,6 +16,7 @@ const Checkout = () => {
     state: "",
     zip: ""
   });
+  const [error, setError] = useState("");
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -28,6 +29,19 @@ const Checkout = () => {
 
   // Submit order
   const placeOrder = async () => {
+    const requiredFields = ["fullName", "email", "address", "city", "state", "zip"];
+    const missing = requiredFields.filter((field) => !form[field]?.trim());
+    if (missing.length > 0) {
+      setError("Please fill out all shipping information before placing your order.");
+      return;
+    }
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(form.email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+    setError("");
+
     const payload = {
       customer: form,
       items: cart.map((item) => ({
@@ -61,6 +75,11 @@ const Checkout = () => {
           <h3>Shipping Information</h3>
 
           <Form className="mt-4">
+            {error && (
+              <Alert variant="danger">
+                {error}
+              </Alert>
+            )}
 
             <Form.Group className="mb-3">
               <Form.Label>Full Name</Form.Label>
