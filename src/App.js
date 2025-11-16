@@ -1,7 +1,7 @@
 
 import AppNavbar from './components/AppNavbar';
 import { CartProvider } from './contexts/CartContext';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Cart from './pages/Cart.jsx';
 import Checkout from './pages/Checkout.jsx';
