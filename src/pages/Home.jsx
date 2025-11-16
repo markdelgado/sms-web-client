@@ -59,7 +59,7 @@ const Home = () => {
         </Container>
       </div>
 
-      {/* PERKS */}
+      {/* PERKS 
       <Container className="py-5">
         <Row className="g-4">
           {perks.map((perk) => (
@@ -74,6 +74,7 @@ const Home = () => {
           ))}
         </Row>
       </Container>
+      */}
 
       {/* FEATURED PRODUCTS */}
       <Container className="py-5">
