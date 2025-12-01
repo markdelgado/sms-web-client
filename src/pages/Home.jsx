@@ -59,24 +59,6 @@ const Home = () => {
         </Container>
       </div>
 
-      {/* PERKS 
-      <Container className="py-5">
-        <Row className="g-4">
-          {perks.map((perk) => (
-            <Col key={perk.title} md={5}>
-              <Card className="h-100 border-0 shadow-sm">
-                <Card.Body>
-                  <Card.Title className="fw-semibold">{perk.title}</Card.Title>
-                  <Card.Text className="text-muted">{perk.detail}</Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </Container>
-      */}
-
-      {/* FEATURED PRODUCTS */}
       <Container className="py-5">
         <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
           <div>
