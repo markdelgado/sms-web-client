@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../contexts/CartContext";
-import { createOrderMock } from "../api/mockApi";
+import { submitSale } from "../api/mockApi";
 
 import { Container, Row, Col, Form, Button, Card, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +16,7 @@ const Checkout = () => {
     state: "",
     zip: ""
   });
+  const [paymentMethod, setPaymentMethod] = useState("CREDIT");
   const [error, setError] = useState("");
   const handleChange = (e) => {
     setForm({
@@ -42,20 +43,26 @@ const Checkout = () => {
     }
     setError("");
 
-    const payload = {
-      customer: form,
-      items: cart.map((item) => ({
-        ...item,
-        quantity: item.quantity ?? 1
-      })),
-      total
-    };
+    const cartItems = cart.flatMap((item) => {
+      const quantity = Math.max(item.quantity ?? 1, 1);
+      return Array.from({ length: quantity }, () => ({
+        sku: item.sku,
+        price: item.price,
+      }));
+    });
 
-    const response = await createOrderMock(payload);
+    try {
+      const { saleId } = await submitSale(cartItems, paymentMethod);
 
-    if (response.success) {
-      clearCart();
-      navigate(`/order-confirmation?orderId=${response.orderId}`);
+      if (saleId) {
+        clearCart();
+        navigate(`/order-confirmation?orderId=${saleId}`);
+      } else {
+        setError("Unable to place order. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      setError("Unable to place order. Please try again.");
     }
   };
 
@@ -147,6 +154,19 @@ const Checkout = () => {
                 </Form.Group>
               </Col>
             </Row>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Payment Method</Form.Label>
+              <Form.Select
+                value={paymentMethod}
+                onChange={(e) => setPaymentMethod(e.target.value)}
+              >
+                <option value="CREDIT">Credit Card</option>
+                <option value="CASH">Cash</option>
+                <option value="APPLE_PAY">Apple Pay</option>
+                <option value="PAYPAL">PayPal</option>
+              </Form.Select>
+            </Form.Group>
 
           </Form>
         </Col>

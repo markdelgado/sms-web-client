@@ -40,7 +40,7 @@ const Home = () => {
               <Badge bg="light" text="dark" className="mb-3 px-3 py-2 rounded-pill">
                 New Arrivals Dropping Weekly
               </Badge>
-              <h1 className="fw-bold display-5">Apperal for every day, curated by SMS</h1>
+              <h1 className="fw-bold display-5">Apperal for every day, curated by 67 Apparel</h1>
               <p className="lead">
                 Discover store-exclusive appearel and online-only drops with seamless pickup or delivery.
               </p>
